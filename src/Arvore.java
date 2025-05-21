@@ -1,10 +1,18 @@
 public class Arvore {
-    No raiz;
+    No Raiz;
 
-    public int contarNo(No NovoNo){
-        if(raiz == null){
+    public int contarNo(No Node){
+        if(Node == null){
             return 0;
         }
-        return 1 + contarNo(NovoNo.FilhoEsquerdo) + contarNo(NovoNo.FilhoDireito);
+        return 1 + contarNo(Node.FilhoEsquerdo) + contarNo(Node.FilhoDireito);
+    }
+
+    public void percorrerEmOrdem(No Node){
+        if(Node != null){
+            percorrerEmOrdem(Node.FilhoEsquerdo);
+            System.out.println(Node.valor + " ");
+            percorrerEmOrdem(Node.FilhoDireito);
+        }
     }
 }
