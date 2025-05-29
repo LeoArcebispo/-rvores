@@ -50,14 +50,33 @@ public class Arvore {
         }
     }
 
-    public void contarNoNaoRecursivo(No Node){
-        int contador = 0;
-        if(Raiz == null){
-            System.out.println("Não há nós na Árvore");
-        } else {
-            while (Node != null){
+    public int contarNosFolhaRecursivo(No Node){
+        if(Node == null) return 0;
+        if(Node.FilhoEsquerdo == null && Node.FilhoDireito == null) return 1;
 
+        return contarNosFolhaRecursivo(Node.FilhoEsquerdo) + contarNosFolhaRecursivo(Node.FilhoDireito);
+    }
+
+    public int contarNosFolha() {
+        if (Raiz == null) return 0;
+        int contador = 0;
+        Queue<No> fila = new LinkedList<>();
+        fila.add(Raiz);
+
+        while (!fila.isEmpty()) {
+            No atual = fila.poll();
+            if (atual.FilhoEsquerdo == null && atual.FilhoDireito == null) {
+                contador++;
+            }
+
+            if (atual.FilhoEsquerdo != null) {
+                fila.add(atual.FilhoEsquerdo);
+            }
+
+            if (atual.FilhoDireito != null) {
+                fila.add(atual.FilhoDireito);
             }
         }
+        return contador;
     }
 }
