@@ -1,12 +1,12 @@
 public class No {
-    String valor;
+    int valor;
     No FilhoEsquerdo;
     No FilhoDireito;
-    int Balanceamento;
+    int altura;
 
-    public No(String valor, int balanceamento){
+    public No(int valor){
         this.valor = valor;
         FilhoEsquerdo = FilhoDireito = null;
-        Balanceamento = balanceamento = 0;
+        altura = 1;
     }
 }
