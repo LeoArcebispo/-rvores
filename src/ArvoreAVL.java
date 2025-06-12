@@ -38,32 +38,6 @@ public class ArvoreAVL {
         return no;
     }
 
-    public int getBalance(No no) {
-        if (no == null) return 0;
-        int alturaEsq = (no.FilhoEsquerdo != null) ? no.FilhoEsquerdo.altura : 0;
-        int alturaDir = (no.FilhoDireito != null) ? no.FilhoDireito.altura : 0;
-        return alturaEsq - alturaDir;
-    }
-
-    public No balancear(No no) {
-        int balance = getBalance(no);
-
-        if (balance > 1 && getBalance(no.FilhoEsquerdo) >= 0) return rotacaoDireita(no);
-
-        if (balance > 1 && getBalance(no.FilhoEsquerdo) < 0) {
-            no.FilhoEsquerdo = rotacaoEsquerda(no.FilhoEsquerdo);
-            return rotacaoDireita(no);
-        }
-
-        if (balance < -1 && getBalance(no.FilhoDireito) <= 0) return rotacaoEsquerda(no);
-
-        if (balance < -1 && getBalance(no.FilhoDireito) > 0) {
-            no.FilhoDireito = rotacaoDireita(no.FilhoDireito);
-            return rotacaoEsquerda(no);
-        }
-        return no;
-    }
-
     public No rotacaoDireita(No y) {
         No x = y.FilhoEsquerdo;
         No T2 = x.FilhoDireito;
